@@ -55,24 +55,14 @@ before_script:
     - >
       echo;
       echo "Stamping Version Number";
-    - export WEBINTERFACE_VERSION=Master
+      export WEBINTERFACE_VERSION=master;
     - if [ $TRAVIS_TAG ]; then
         export WEBINTERFACE_VERSION=$TRAVIS_TAG;
       fi
-    - sed -i "s|@WEBINTERFACE_VERSION@|${WEBINTERFACE_VERSION}|" bootstrap.php
-    - grep -w 'WEBINTERFACE_VERSION' bootstrap.php
+    - sed -e s%@WEBINTERFACE_VERSION@%${WEBINTERFACE_VERSION}% ./bootstrap.php > ./bootstrap.php;
+    - cat ./bootstrap.php;
 
 script:
-  # Versionize
-  - >
-    echo;
-    echo "Stamping Version Number";
-    export WEBINTERFACE_VERSION=master;
-  - if [ $TRAVIS_TAG ]; then
-      export WEBINTERFACE_VERSION=$TRAVIS_TAG;
-    fi
-  - sed -e s%@WEBINTERFACE_VERSION@%${WEBINTERFACE_VERSION}% bootstrap.php > bootstrap.php;
-  - cat bootstrap.php;
   # PHP lint
   - >
     echo;
