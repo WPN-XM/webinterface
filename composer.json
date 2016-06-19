@@ -18,7 +18,7 @@
         "issues": "https://github.com/wpn-xm/wpn-xm/issues/"
     },
     "require": {
-        "php":                      ">=5.5.0",
+        "php":                      "^5.6 || ^7.0",
         "wpn-xm/software":          "dev-master",
         "wpn-xm/php-software":      "dev-master",
         "jakoch/nginx-conf":        "0.1.0"
