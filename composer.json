@@ -13,7 +13,7 @@
         }
     ],
     "support": {
-        "irc":  "irc://irc.freenode.org/koch",
+        "irc":  "irc://irc.freenode.org/wpnxm",
         "source": "https://github.com/wpn-xm/webinterface/",
         "issues": "https://github.com/wpn-xm/wpn-xm/issues/"
     },
