@@ -33,15 +33,15 @@ class Domains
         }
 
         if (!self::areEnabledDomainsLoadedByNginxConf()) {
-            // tell the world that "nginx.conf" misses "include domains.conf;"
+            // tell the world that "nginx.conf" misses to "include sites-enabled/*.conf;"
             exit(sprintf('<div class="error bold" style="font-size: 13px; width: 500px;">
-                %s does not include the config files of the domains-enabled folder.<br><br>
-                    Please add "include domains-enabled/*;" to "nginx.conf".</div>',
+                %s does not include the config files of the sites-enabled folder.<br><br>
+                    Please check "nginx.conf" and add "include sites-enabled/*.conf;".</div>',
                 WPNXM_NGINX_CONF));
         }
 
-        $enabledDomains  = glob(WPNXM_NGINX_DOMAINS_ENABLED_DIR.'\*.conf');
-        $disabledDomains = glob(WPNXM_NGINX_DOMAINS_ENABLED_DIR.'\*.conf');
+        $enabledDomains  = glob(WPNXM_NGINX_SITES_ENABLED_DIR.'\*.conf');
+        $disabledDomains = glob(WPNXM_NGINX_SITES_ENABLED_DIR.'\*.conf');
 
         $domains = [];
 
@@ -110,7 +110,7 @@ class Domains
 
         foreach ($lines as $line) {
             // return true, if the line exists and is not commented
-            if (preg_match('/(.*)include domains-enabled\/\*/', $line, $matches)) {
+            if (preg_match('/(.*)include sites-enabled\/\*/', $line, $matches)) {
                 $comment = trim($matches[1]);
 
                 return ($comment === ';' or $comment === '#') ? false : true;
