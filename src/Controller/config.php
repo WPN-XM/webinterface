@@ -364,7 +364,10 @@ function update_phpversionswitch()
 {
     $new_version = filter_input(INPUT_POST, 'new_php_version');
 
+    WPNXM\Webinterface\Helper\Daemon::stopDaemon('php');
+
     WPNXM\Webinterface\Helper\PHPVersionSwitch::switchVersion($new_version);
+
     WPNXM\Webinterface\Helper\Daemon::restartDaemon('php');
 
     echo '<div class="modal"><p class="info">PHP version switched. PHP restarted.</div>';
