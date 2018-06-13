@@ -2,10 +2,10 @@
 /**
  * WPИ-XM Server Stack
  * Copyright © 2010 - onwards, Jens-André Koch <jakoch@web.de>
- * http://wpn-xm.org/
+ * https://wpn-xm.org/
  *
- * This source file is subject to the terms of the MIT license.
- * For full copyright and license information, view the bundled LICENSE file.
+ * Licensed under the MIT License.
+ * See the bundled LICENSE file for copyright and license information.
  */
 
 error_reporting(E_ALL);
