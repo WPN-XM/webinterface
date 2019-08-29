@@ -16,12 +16,12 @@ before_script:
   # Composer
     - composer install --prefer-dist --no-interaction
   # X Virtual Frame Buffer
-    - export DISPLAY=:99.0
-    - sh -e /etc/init.d/xvfb start
+    #- export DISPLAY=:99.0
+    #- sh -e /etc/init.d/xvfb start
   # Selenium
-    - wget http://selenium-release.storage.googleapis.com/2.43/selenium-server-standalone-2.43.1.jar
-    - java -jar selenium-server-standalone-2.43.1.jar > /dev/null 2>&1 &
-    - sleep 5
+    #- wget http://selenium-release.storage.googleapis.com/2.43/selenium-server-standalone-2.43.1.jar
+    #- java -jar selenium-server-standalone-2.43.1.jar > /dev/null 2>&1 &
+    #- sleep 5
   # Nginx
     - sudo cp /home/travis/build/WPN-XM/webinterface/tests/nginx.conf.travis /etc/nginx/nginx.conf
   # Return to project root, create error.log and start Nginx
