@@ -15,7 +15,7 @@ before_script:
     #- pecl -q install mongo-1.4.1 && echo "extension=mongo.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
   # Composer (PHP dependency solver)
     - composer self-update
-    - composer install --dev --prefer-dist --no-interaction
+    - composer install --prefer-dist --no-interaction
   # X Virtual Frame Buffer
     - export DISPLAY=:99.0
     - sh -e /etc/init.d/xvfb start
