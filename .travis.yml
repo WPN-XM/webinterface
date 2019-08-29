@@ -3,20 +3,27 @@ language: php
 sudo: required
 
 dist: xenial
+
 addons:
+#chrome: stable
   apt:
     packages:
      - nginx
      - php7.0-fpm
+     
+services:
+  - xvfb
 
 php: [7.3]
 
 before_script:
   # Composer
     - composer install --prefer-dist --no-interaction
-  # X Virtual Frame Buffer
-    #- export DISPLAY=:99.0
-    #- sh -e /etc/init.d/xvfb start
+  # X Virtual Frame Buffer  
+    - export DISPLAY=:99.0
+    - sh -e /etc/init.d/xvfb start
+    - sleep 5
+    #  xvfb-run --server-args="-screen 0 1024x768x24" make test
   # Selenium
     #- wget http://selenium-release.storage.googleapis.com/2.43/selenium-server-standalone-2.43.1.jar
     #- java -jar selenium-server-standalone-2.43.1.jar > /dev/null 2>&1 &
@@ -28,6 +35,9 @@ before_script:
     - sudo /etc/init.d/nginx restart
     - sleep 2
     - curl http://localhost:80/ -v
+  # Chrome Headless
+    # start web app and listen on `localhost`
+    #- google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 
 script:
 #  - ./bin/behat --config ./tests/behat.yml
