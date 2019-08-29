@@ -6,7 +6,6 @@ dist: xenial
 addons:
   apt:
     packages:
-     - firefox
      - nginx
      - php7.0-fpm
 
